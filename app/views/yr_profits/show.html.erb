@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @yr_profit.name %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @yr_profit.year %>
+</p>
+
+<p>
+  <strong>Quarter:</strong>
+  <%= @yr_profit.quarter %>
+</p>
+
+<p>
+  <strong>Latest amt:</strong>
+  <%= @yr_profit.latest_amt %>
+</p>
+
+<p>
+  <strong>Previous amt:</strong>
+  <%= @yr_profit.previous_amt %>
+</p>
+
+<p>
+  <strong>Inc amt:</strong>
+  <%= @yr_profit.inc_amt %>
+</p>
+
+<p>
+  <strong>Inc pct:</strong>
+  <%= @yr_profit.inc_pct %>
+</p>
+
+<%= link_to 'Edit', edit_yr_profit_path(@yr_profit) %> |
+<%= link_to 'Back', yr_profits_path %>

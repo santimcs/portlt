@@ -1,0 +1,155 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ticker.name %>
+  <strong>Sector:</strong>
+  <%= @ticker.sector %>
+  <strong>Subsector:</strong>
+  <%= @ticker.subsector %>
+  <strong>Market:</strong>
+  <%= @ticker.market %>
+  <strong>Website:</strong>
+  <% if !@ticker.website.nil? %>
+    <%= link_to(@ticker.website, "http://"+@ticker.website, :target => "_new") %>
+  <% else %>
+    <%= 'Dummy' %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @stock.price %> 
+  <strong>Max:</strong>
+  <%= @stock.max_price %>
+  <strong>Min:</strong>
+  <%= @stock.min_price %>
+  <strong>Volume:</strong>
+  <%= @stock.daily_volume %>
+  <strong>Beta:</strong>
+  <%= @stock.beta %>  
+  <strong>P/E:</strong>
+  <%= @stock.pe %>
+  <strong>P/BV:</strong>
+  <%= @stock.pbv %>   
+</p>
+<% if @consensu %>
+<p>
+  <strong>Target Price:</strong>
+  <%= @consensu.target_price %> 
+  <strong>Up %:</strong>
+  <%= number_with_precision((@consensu.target_price-@stock.price)/@stock.price*100,
+  precision: 2) %> 
+  <strong>Buy:</strong>
+  <%= @consensu.buy %> 
+  <strong>Hold:</strong>
+  <%= @consensu.hold %> 
+  <strong>Sell:</strong>
+  <%= @consensu.sell %> 
+  <strong>Yield:</strong>
+  <%= @consensu.yield %> 
+  <strong>P/E:</strong>
+  <%= @consensu.pe %>
+  <strong>P/BV:</strong>
+  <%= @consensu.pbv %>   
+</p>
+<% end %>
+<div class="container">
+  <div class="row">
+
+    <!-- Begin of EPS -->
+    <div class="col-md-6">
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Qtr</th>
+            <th>Qtr amt</th>
+            <th>Year amt</th>
+            <th>Qtr%</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% i = 0 %>
+          <% session_quarter = '' %>          
+          <% @epss.each do |eps| %>
+            <% i += 1 %>
+            <% if i < 15 %>
+              <% if i == 1 %>
+                <% session_quarter = 'Q' + eps.quarter.to_s %>
+              <% end %>
+            <tr>
+              <td><%= eps.year %></td>
+              <td><%= 'Q' + eps.quarter.to_s %></td>
+              <td><%= number_with_precision(eps.q_amt, precision: 0, delimiter: ',') %></td>
+              <td><%= number_with_precision(eps.y_amt, precision: 0, delimiter: ',') %></td>
+              <% if (eps.y_amt != 0) %>
+                <td><%= number_with_precision((eps.q_amt-eps.y_amt)/eps.y_amt.abs.to_f*100, precision: 1, delimiter: ',') %></td>
+              <% else %>
+                <td><%= 0.0 %></td>
+              <% end %>        
+            </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>  <!-- end of col -->
+    <!-- End of EPS -->
+
+    <div class="col-md-6">
+    <!-- Begin of Qt profits -->
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Year</th>      
+            <th>Qtr</th>
+            <th>Amount</th>            
+            <th>Profit Up</th>
+            <th>Up Pct</th>      
+          </tr>
+        </thead>
+        <tbody>
+          <% @qt_profits.each do |qt_profit| %>
+            <tr>
+              <td><%= qt_profit.year %></td>
+              <td><%= qt_profit.quarter %></td>
+              <td><%= number_to_human(qt_profit.latest_amt*1000) %></td>            <td><%= number_to_human(qt_profit.inc_amt*1000) %></td>
+              <td><%= number_with_precision(qt_profit.inc_pct, precision: 1, delimiter: ',') %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <!-- End of Qt profits -->
+
+      <!-- Begin of Qt profits -->
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Year</th>      
+            <th>Qtr</th>
+            <th>Amount</th>                        
+            <th>Profit Up</th>
+            <th>Up Pct</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @yr_profits.each do |yr_profit| %>
+            <% if yr_profit.quarter == session_quarter %>
+              <tr>
+                <td><%= yr_profit.year %></td>
+                <td><%= yr_profit.quarter %></td>
+                <td><%= number_to_human(yr_profit.latest_amt*1000) %></td>          <td><%= number_to_human(yr_profit.inc_amt*1000) %></td>
+                <td><%= number_with_precision(yr_profit.inc_pct, precision: 1, delimiter: ',') %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+      <!-- End of Yr profits -->
+
+    </div>  <!-- end of col -->
+
+  </div>  <!-- End of row -->
+
+</div>  <!-- End of container -->
+<%= link_to 'Back', tickers_path %>

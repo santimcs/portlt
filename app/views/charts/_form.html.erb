@@ -1,0 +1,42 @@
+<%= form_with(model: chart, local: true) do |form| %>
+  <% if chart.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(chart.errors.count, "error") %> prohibited this chart from being saved:</h2>
+
+      <ul>
+      <% chart.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :ticker %>
+    <%= form.collection_select :ticker_id, Ticker.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.select :year, Chart::YEAR, {} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quarter %>
+    <%= form.select :quarter, Chart::QUARTER, {} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image_q %>
+    <%= form.text_field :image_q, id: :chart_image_q %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image_y %>
+    <%= form.text_field :image_y, id: :chart_image_y %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

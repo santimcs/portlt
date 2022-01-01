@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @eps.name %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @eps.year %>
+</p>
+
+<p>
+  <strong>Quarter:</strong>
+  <%= @eps.quarter %>
+</p>
+
+<p>
+  <strong>Q amt:</strong>
+  <%= @eps.q_amt %>
+</p>
+
+<p>
+  <strong>Y amt:</strong>
+  <%= @eps.y_amt %>
+</p>
+
+<p>
+  <strong>Aq amt:</strong>
+  <%= @eps.aq_amt %>
+</p>
+
+<p>
+  <strong>Ay amt:</strong>
+  <%= @eps.ay_amt %>
+</p>
+
+<p>
+  <strong>Q eps:</strong>
+  <%= @eps.q_eps %>
+</p>
+
+<p>
+  <strong>Y eps:</strong>
+  <%= @eps.y_eps %>
+</p>
+
+<p>
+  <strong>Aq eps:</strong>
+  <%= @eps.aq_eps %>
+</p>
+
+<p>
+  <strong>Ay eps:</strong>
+  <%= @eps.ay_eps %>
+</p>
+
+<p>
+  <strong>Publish Date:</strong>
+  <%= @eps.publish_date.strftime("%d %B %Y") %>
+</p>
+
+<p>
+  <strong>Ticker Id:</strong>
+  <%= @eps.ticker_id %>
+</p>
+
+<%= link_to 'Edit', edit_eps_path(@eps) %> |
+<%= link_to 'Back', epss_path %>

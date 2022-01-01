@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  market: MyString
+  price: MyString
+  max_price: MyString
+  min_price: MyString
+  pe: MyString
+  pbv: MyString
+  paid_up: MyString
+  market_cap: MyString
+  daily_vol: MyString
+  beta: MyString
+  ticker_id: MyString
+
+two:
+  name: MyString
+  market: MyString
+  price: MyString
+  max_price: MyString
+  min_price: MyString
+  pe: MyString
+  pbv: MyString
+  paid_up: MyString
+  market_cap: MyString
+  daily_vol: MyString
+  beta: MyString
+  ticker_id: MyString

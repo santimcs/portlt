@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Items</h1>
+<table id="items" class="display table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Market</th>
+      <th>Sector</th>
+      <th>Subsector</th>
+      <th>Hour</th>
+      <th>Publish date</th>
+      <th>Quarter</th>
+      <th>Year</th>
+      <th>E</th>
+      <th>D</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+    <% if item.ticker.market != 'mai' %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.ticker.market %></td>
+        <td><%= item.ticker.sector %></td>
+        <td><%= item.ticker.subsector %></td>
+        <td><%= item.hour %></td>
+        <td><%= item.publish_date %></td>
+        <td><%= item.quarter %></td>
+        <td><%= item.year %></td>
+        <td><%= link_to 'E', edit_item_path(item), target: "_new" %></td>
+        <td><%= link_to 'D', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item', new_item_path %>

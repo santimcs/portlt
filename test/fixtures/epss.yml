@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  year: 1
+  quarter: 1
+  q_amt: MyString
+  y_amt: MyString
+  aq_amt: MyString
+  ay_amt: MyString
+  q_eps: MyString
+  y_eps: MyString
+  aq_eps: MyString
+  ay_eps: MyString
+
+two:
+  name: MyString
+  year: 1
+  quarter: 1
+  q_amt: MyString
+  y_amt: MyString
+  aq_amt: MyString
+  ay_amt: MyString
+  q_eps: MyString
+  y_eps: MyString
+  aq_eps: MyString
+  ay_eps: MyString

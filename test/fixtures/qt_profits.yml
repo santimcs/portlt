@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  year: 1
+  quarter: MyString
+  latest_amt: 1
+  previous_amt: 1
+  inc_amt: 1
+  inc_pct: 9.99
+  ticker: one
+
+two:
+  name: MyString
+  year: 1
+  quarter: MyString
+  latest_amt: 1
+  previous_amt: 1
+  inc_amt: 1
+  inc_pct: 9.99
+  ticker: two

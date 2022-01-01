@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  year: 1
+  quarter: 1
+  image_q: MyString
+  image_y: MyString
+  ticker: one
+
+two:
+  name: MyString
+  year: 1
+  quarter: 1
+  image_q: MyString
+  image_y: MyString
+  ticker: two

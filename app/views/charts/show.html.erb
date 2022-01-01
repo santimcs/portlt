@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @chart.name %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @chart.year %>
+</p>
+
+<p>
+  <strong>Quarter:</strong>
+  <%= @chart.quarter %>
+</p>
+
+<p>
+  <strong>Image q:</strong>
+  <%= @chart.image_q %>
+</p>
+
+<p>
+  <strong>Image y:</strong>
+  <%= @chart.image_y %>
+</p>
+
+<p>
+  <strong>Ticker:</strong>
+  <%= @chart.ticker_id %>
+</p>
+
+<%= link_to 'Edit', edit_chart_path(@chart) %> |
+<%= link_to 'Back', charts_path %>

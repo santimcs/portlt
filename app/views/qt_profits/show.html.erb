@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @qt_profit.name %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @qt_profit.year %>
+</p>
+
+<p>
+  <strong>Quarter:</strong>
+  <%= @qt_profit.quarter %>
+</p>
+
+<p>
+  <strong>Latest amt:</strong>
+  <%= @qt_profit.latest_amt %>
+</p>
+
+<p>
+  <strong>Previous amt:</strong>
+  <%= @qt_profit.previous_amt %>
+</p>
+
+<p>
+  <strong>Inc amt:</strong>
+  <%= @qt_profit.inc_amt %>
+</p>
+
+<p>
+  <strong>Inc pct:</strong>
+  <%= @qt_profit.inc_pct %>
+</p>
+
+<%= link_to 'Edit', edit_qt_profit_path(@qt_profit) %> |
+<%= link_to 'Back', qt_profits_path %>

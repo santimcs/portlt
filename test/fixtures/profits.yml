@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  year: 1
+  quarter: 1
+  kind: 1
+  latest_amt_y: 1
+  previous_amt_y: 1
+  inc_amt_y: 1
+  inc_pct_y: 9.99
+  latest_amt_q: 1
+  previous_amt_q: 1
+  inc_amt_q: 1
+  inc_pct_q: 9.99
+  q_amt_c: 1
+  y_amt: 1
+  inc_amt_py: 1
+  inc_pct_py: 9.99
+  q_amt_p: 1
+  inc_amt_pq: 1
+  inc_pct_pq: 9.99
+  ticker: one
+
+two:
+  name: MyString
+  year: 1
+  quarter: 1
+  kind: 1
+  latest_amt_y: 1
+  previous_amt_y: 1
+  inc_amt_y: 1
+  inc_pct_y: 9.99
+  latest_amt_q: 1
+  previous_amt_q: 1
+  inc_amt_q: 1
+  inc_pct_q: 9.99
+  q_amt_c: 1
+  y_amt: 1
+  inc_amt_py: 1
+  inc_pct_py: 9.99
+  q_amt_p: 1
+  inc_amt_pq: 1
+  inc_pct_pq: 9.99
+  ticker: two

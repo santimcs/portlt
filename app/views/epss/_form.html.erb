@@ -1,0 +1,98 @@
+<%= form_for(@eps) do |f| %>
+    <% if @eps.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@eps.errors.count, "error") %> prohibited this eps from being saved:</h2>
+            <ul>
+                <% @eps.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <% where_clause = '"tickers"."name" NOT IN (SELECT "exempts"."name" FROM "exempts")' %>
+    <!-- row 1 -->
+    <div class="row">
+        <div class="col-xs-6">
+            <label class="control-label col-xs-4"><%= f.label :ticker_id %></label>
+            <%= f.collection_select :ticker_id, Ticker.where("#{where_clause}"), :id, :name %>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <!-- row 2 -->
+    <div class="row">
+        <div class="col-xs-6">
+            <label class="control-label col-xs-4"><%= f.label :q_amt %></label>
+            <%= f.text_field :q_amt %>
+        </div>
+        <div class="col-xs-6">
+            <label class="control-label col-xs-5"><%= f.label :y_amt %></label>
+            <%= f.text_field :y_amt %>
+        </div>
+    </div>
+    <!-- row 3 -->
+    <div class="row">
+        <div class="col-xs-6">
+            <label class="control-label col-xs-4"><%= f.label :aq_amt %></label>
+            <%= f.text_field :aq_amt %>
+        </div>
+        <div class="col-xs-6">
+            <label class="control-label col-xs-5"><%= f.label :ay_amt %></label>
+            <%= f.text_field :ay_amt %>
+        </div>
+    </div>
+    <!-- row 4 -->
+    <div class="row">
+        <div class="col-xs-6">
+            <label class="control-label col-xs-4"><%= f.label :q_eps %></label>
+            <%= f.text_field :q_eps %>
+        </div>
+        <div class="col-xs-6">
+            <label class="control-label col-xs-5"><%= f.label :y_eps %></label>
+            <%= f.text_field :y_eps %>
+        </div>
+    </div>
+    <!-- row 5 -->
+    <div class="row">
+        <div class="col-xs-6">
+            <label class="control-label col-xs-4"><%= f.label :aq_eps %></label>
+            <%= f.text_field :aq_eps %>
+        </div>
+        <div class="col-xs-6">
+            <label class="control-label col-xs-5"><%= f.label :ay_eps %></label>
+            <%= f.text_field :ay_eps %>
+        </div>
+    </div>
+    <br/>
+        <!-- row 6 -->
+    <div class="row">
+        <div class="col-xs-12">
+            <label class="control-label col-xs-2"></label>
+            <%= f.submit %>
+        </div>
+    </div>
+        <br/>
+
+    <!-- row 7 -->
+    <div class="row">
+        <div class="col-xs-6">
+            <label class="control-label col-xs-4"><%= f.label :publish_date %></label>
+            <%= f.date_select :publish_date, :start_year => 2016, :end_year => 2021,
+    order: [:day, :month, :year]  %>
+        </div>
+    </div>
+
+    <!-- row 8 -->
+    <div class="row">
+        <div class="col-xs-6">
+
+            <label class="control-label col-xs-4"><%= f.label :year %></label>
+            <%=f.select :year, Eps::YEAR, {} %>
+        </div>
+        <div class="col-xs-6">
+            <label class="control-label col-xs-4"><%= f.label :quarter %></label>
+            <%=f.select :quarter, Eps::QUARTER, {} %>
+        </div>
+    </div>
+    <br/>
+<% end %>

@@ -1,0 +1,68 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Quarterly Profits</h2>
+
+<table id="qt_profits" class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Year</th>      
+            <th>Qtr</th>
+            <th>Profit Up</th>
+            <th>Up Pct</th>
+            <th>Price</th>    
+            <th>Max</th> 
+            <th>Pct</th>  
+            <th>Target</th>  
+            <th>B</th>
+            <th>H</th>        
+            <th>S</th>               
+            <th>P/E</th>
+            <th>P/BV</th>        
+            <th>Volume</th>
+            <th>Beta</th>           
+            <th></th>
+            <th></th>      
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @qt_profits.each do |qt_profit| %>
+            <tr>
+                <td><%= qt_profit.name %></td>
+                <td><%= qt_profit.year %></td>
+                <td><%= qt_profit.quarter %></td>
+                <td><%= number_with_precision(qt_profit.inc_amt, precision: 0, delimiter: ',') %></td>
+                <td><%= number_with_precision(qt_profit.inc_pct, precision: 1, delimiter: ',') %></td>
+                <td><%= number_with_precision(qt_profit.ticker.stock.price, precision: 2) %></td>
+                <td><%= number_with_precision(qt_profit.ticker.stock.max_price, precision: 2) %></td>   
+                <td><%= number_with_precision((qt_profit.ticker.stock.max_price-qt_profit.ticker.stock.price)/
+                qt_profit.ticker.stock.price*100, precision: 2) %></td>   
+                <% consensu = Consensu.find_by_name(qt_profit.name) %>
+
+                <% if consensu %> 
+                  <td><%= number_with_precision(consensu.target_price, precision: 2) %></td>  
+                  <td><%= consensu.buy %></td>  
+                  <td><%= consensu.hold %></td> 
+                  <td><%= consensu.sell %></td> 
+                <% else %>
+                  <td><%= 0.00 %></td>
+                  <td><%= 0 %></td>  
+                  <td><%= 0 %></td>
+                  <td><%= 0 %></td>                            
+                <% end %>
+
+                <td><%= number_with_precision(qt_profit.ticker.stock.pe, precision: 2) %></td>
+                <td><%= number_with_precision(qt_profit.ticker.stock.pbv, precision: 2) %></td>         
+                <td><%= number_with_precision(qt_profit.ticker.stock.daily_volume, precision: 2, delimiter: ',') %></td>
+                <td><%= number_with_precision(qt_profit.ticker.stock.beta, precision: 2) %></td>              
+                <td><%= link_to 'S', qt_profit %></td>
+                <td><%= link_to 'D', qt_profit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Profit', new_qt_profit_path %>

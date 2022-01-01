@@ -1,0 +1,2 @@
+class Exempt < ApplicationRecord
+end

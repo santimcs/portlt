@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Earning Per Share</h1>
+<%= link_to 'New Eps', new_eps_path %>
+<table id="epss" class="display table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Year</th>
+      <th>Qt</th>
+      <th>Q amt</th>
+      <th>Y amt</th>
+      <th>Aq amt</th>
+      <th>Ay amt</th>
+      <th>Q eps</th>
+      <th>Y eps</th>
+      <th>Aq eps</th>
+      <th>Ay eps</th>
+      <th>Qtr%</th>
+      <th>Acc%</th>
+      <th>E</th>
+      <th>D</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @epss.each do |eps| %>
+      <tr>
+        <td><%= eps.name %></td>
+        <td><%= eps.year %></td>
+        <td><%= 'Q' + eps.quarter.to_s %></td>
+        <td><%= number_with_precision(eps.q_amt, precision: 0, delimiter: ',') %></td>
+        <td><%= number_with_precision(eps.y_amt, precision: 0, delimiter: ',') %></td>
+        <td><%= number_with_precision(eps.aq_amt, precision: 0, delimiter: ',') %></td>
+        <td><%= number_with_precision(eps.ay_amt, precision: 0, delimiter: ',') %></td>
+        <td><%= number_with_precision(eps.q_eps, precision: 4) %></td>
+        <td><%= number_with_precision(eps.y_eps, precision: 4) %></td>
+        <td><%= number_with_precision(eps.aq_eps, precision: 4) %></td>
+        <td><%= number_with_precision(eps.ay_eps, precision: 4) %></td>
+        <% if (eps.y_amt != 0) %>
+          <td><%= number_with_precision((eps.q_amt-eps.y_amt)/eps.y_amt.abs.to_f*100, precision: 2, delimiter: ',') %></td>
+          <td><%= number_with_precision((eps.aq_amt-eps.ay_amt)/eps.ay_amt.abs.to_f*100, precision: 2, delimiter: ',') %></td>
+        <% else %>
+          <td><%= 0.00 %></td>
+          <td><%= 0.00 %></td>
+        <% end %>
+        <td><%= link_to 'E', edit_eps_path(eps), target: "_new" %></td>
+        <td><%= link_to 'D', eps, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Eps', new_eps_path, target: "_new" %>

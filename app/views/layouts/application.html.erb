@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><% if content_for?(:title) %><%= yield :title %><% else %>PortLt<% end %></title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'application' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+    <body class="<%= controller.controller_name %>">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#" class="navbar-brand">PortLt</a>
+        </div> <!--end navbar-header -->
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'List', list_epss_path %></li>            
+            <li><%= link_to 'EPS', epss_path %></li>            
+            <li><%= link_to 'Qt Profits', qt_profits_path %></li>   
+            <li><%= link_to 'Yr Profits', yr_profits_path %></li>  
+            <li><%= link_to 'Profits', profits_path %></li>                       
+            <li><%= link_to 'Stocks', stocks_path %></li>
+            <li><%= link_to 'Tickers', tickers_path %></li>  
+            <li><%= link_to 'Charts', charts_path %></li>                        
+          </ul>
+          
+        </div><!--end of collapse navbar-collapse -->
+
+      </div> <!-- end of container -->
+    </nav>  <!-- End of nav element --> 
+    <div class="container bodyContent">
+     <!-- from Bootstrap for Rails -->
+      <%= yield %>
+    </div> <!-- end of container -->
+
+  </body>
+</html>
