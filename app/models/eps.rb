@@ -12,14 +12,15 @@ class Eps < ApplicationRecord
           	"2017",
 			"2016",
 			"2015",
-			"2014"
+			"2014",
+			"2022" 		
         	]
 
   	QUARTER = [
+		"4",
 		"3",
 		"2",
-		"1",   		
-		"4"
+		"1"   		
 		]
 
 	def q_amt_in_million
