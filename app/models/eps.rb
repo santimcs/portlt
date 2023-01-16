@@ -5,6 +5,7 @@ class Eps < ApplicationRecord
  #  default_scope { order(name: 'asc', year: 'desc', quarter: 'desc') }
 
   	YEAR = [
+			"2023", 			
 			"2022", 			
 			"2021",
 			"2020",
