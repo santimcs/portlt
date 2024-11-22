@@ -4,5 +4,5 @@
 jQuery ->  
         $('#epss').dataTable({
         pagingType: 'full_numbers', 
-        order: [[ 1, "desc"],[2,"desc"],[0,"asc"]]
+        order: [[ 15, "desc"],[2,"desc"],[0,"asc"]]
         })

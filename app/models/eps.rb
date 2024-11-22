@@ -5,23 +5,24 @@ class Eps < ApplicationRecord
  #  default_scope { order(name: 'asc', year: 'desc', quarter: 'desc') }
 
   	YEAR = [
+			"2024", 			
 			"2023", 			
 			"2022", 			
 			"2021",
 			"2020",
-            "2019",
-          	"2018",
-          	"2017",
+      "2019",
+      "2018",
+      "2017",
 			"2016",
 			"2015",
 			"2014"
         	]
 
   	QUARTER = [
-		"3",
-		"2",
-		"1",  		
-		"4"
+			"3",
+			"2",
+			"1",
+			"4"
 		]
 
 	def q_amt_in_million

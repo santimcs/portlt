@@ -20,6 +20,7 @@
       <th>Acc%</th>
       <th>E</th>
       <th>D</th>
+      <th>-ID-</th>
     </tr>
   </thead>
 
@@ -46,7 +47,7 @@
         <% end %>
         <td><%= link_to 'E', edit_eps_path(eps), target: "_new" %></td>
         <td><%= link_to 'D', eps, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <td><%= eps.id %></td>
     <% end %>
   </tbody>
 </table>
